@@ -20,3 +20,4 @@ production:
   database: recipe_app_pro
   # username: postgres
   # password: 12345
+  url: <%= ENV["DATABASE_URL"] %>
