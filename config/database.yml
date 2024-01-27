@@ -1,23 +1,22 @@
-
 default: &default
-  adapter: postgresql
-  encoding: unicode
-
+  adapter: mysql2
+  encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: root
+  password: 6991
+  socket: /var/run/mysqld/mysqld.sock
 
 development:
   <<: *default
   database: recipe_app_dev
-  # username: postgres
-  # password: 12345
+
 test:
   <<: *default
   database: recipe_app_test
-  # username: postgres
-  # password: 12345
+
 production:
   <<: *default
-  database: recipe_app_pro
-  # username: postgres
-  # password: 12345
   url: <%= ENV["DATABASE_URL"] %>
+  database: recipe_app_pro
+  username: myapp
+  password: <%= ENV["MYAPP_DATABASE_PASSWORD"] %>

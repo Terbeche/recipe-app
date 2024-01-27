@@ -10,23 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_04_091447) do
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
-  create_table "foods", force: :cascade do |t|
+ActiveRecord::Schema[7.1].define(version: 2022_10_04_091447) do
+  create_table "foods", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "measurement_unit"
-    t.decimal "price"
-    t.decimal "quantity"
+    t.decimal "price", precision: 10
+    t.decimal "quantity", precision: 10
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_foods_on_user_id"
   end
 
-  create_table "recipe_foods", force: :cascade do |t|
-    t.decimal "quantity"
+  create_table "recipe_foods", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.decimal "quantity", precision: 10
     t.bigint "food_id", null: false
     t.bigint "recipe_id", null: false
     t.datetime "created_at", null: false
@@ -35,10 +32,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_04_091447) do
     t.index ["recipe_id"], name: "index_recipe_foods_on_recipe_id"
   end
 
-  create_table "recipes", force: :cascade do |t|
+  create_table "recipes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
-    t.decimal "preparation_time", default: "0.0"
-    t.decimal "cooking_time", default: "0.0"
+    t.decimal "preparation_time", precision: 10, default: "0"
+    t.decimal "cooking_time", precision: 10, default: "0"
     t.text "description"
     t.boolean "public", default: false
     t.datetime "created_at", null: false
@@ -47,7 +44,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_04_091447) do
     t.index ["user_id"], name: "index_recipes_on_user_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
