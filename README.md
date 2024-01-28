@@ -9,6 +9,12 @@
 - [ ] Postgresql
 - [ ] TailwindCSS
 
+
+
+## Live Demo (if available)
+[Live Demo Link](https://recipe-web-app-db3d0fbf5df2.herokuapp.com/)
+
+
 ### Install & Setup
 
 To setup and install this sample AlFa Blog project, follow the below steps:
